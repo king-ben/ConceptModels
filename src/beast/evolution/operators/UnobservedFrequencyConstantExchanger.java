@@ -21,7 +21,7 @@ public class UnobservedFrequencyConstantExchanger extends Operator{
     int n;
     int x;
     
-	double nstates_plus;
+	double nstates;
 	
     private double scaleFactor;
     RealParameter freqpar;
@@ -46,10 +46,10 @@ public class UnobservedFrequencyConstantExchanger extends Operator{
 			freqpar = frequenciesInput.get().get(i);
 			n = freqpar.getDimension();
 			x = n-1;
-			nstates_plus = nstatesInput.get().getArrayValue(i)+newValue;
-			newValueUnobs = 1/(nstates_plus+newValue);
-			freqpar.setValue(x, newValueUnobs);
-			newValueObs = (1-newValueUnobs)/(x);
+			nstates = nstatesInput.get().getArrayValue(i);
+			
+			freqpar.setValue(x, newValue);
+			newValueObs = (1-newValue)/(x);
 			for(int j=0; j<x; j++) {
 				freqpar.setValue(j, newValueObs);
 			}
