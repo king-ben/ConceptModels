@@ -1,6 +1,22 @@
 # ConceptModels
 BEAST2 package for analysing lexical linguistic data as multistate meaning/concept classes.
 
+# Quick start in R
+The functions in the [ConceptModels-Rtools](https://github.com/king-ben/ConceptModels-Rtools/blob/master/multistate_functions.R) package produce xml blocks which can be used to assemble an xml file for a multistate analysis.
+The multistate_xml function will produce these xml blocks when applied to a nexus file in the working directory. The file should have the meaning partitions defined and have an ascertainment (all zero) site for every meaning.
+
+
+```
+library(devtools)
+source_url("https://raw.githubusercontent.com/king-ben/ConceptModels-Rtools/master/multistate_functions.R?token=GHSAT0AAAAAABZG3DCAIZNLSWL5W4CLPAZQYZS6RDA")
+
+xml <- multistate_xml("name-of-file.nex")
+
+saveall_multistate(xml)
+
+```
+
+
 Building package from source
 ----------------------------
 Ensure Apache Ant is installed.
